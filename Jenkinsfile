@@ -14,4 +14,5 @@ node() {
   }
   stage('deploy') {
     cloudFoundryDeploy( script: this, mtaPath: 'piper.node.hello.world.mtar')
+  }
 }
