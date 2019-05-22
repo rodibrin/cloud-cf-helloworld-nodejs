@@ -14,6 +14,7 @@ node() {
   }
   
   stage('deploy') {
-    cloudFoundryDeploy( script: this, mtaPath: 'com.sap.piper.node.hello.world.mtar')
+    def mtarFilePath = commonPipelineEnvironment.getMtarFilePath()
+    cloudFoundryDeploy( script: this, mtaPath: mtarFilePath)
   }
 }
