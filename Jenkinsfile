@@ -14,7 +14,6 @@ node() {
   }
   
   stage('deploy') {
-    def mtarFilePath = commonPipelineEnvironment.getMtarFilePath()
-    cloudFoundryDeploy( script: this, mtaPath: mtarFilePath)
+    cloudFoundryDeploy script: this
   }
 }
