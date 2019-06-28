@@ -1,8 +1,13 @@
 general:
 steps:
+  dockerExecute:
+    dockerPullImage: true
+    sidecarPullImage: true
+    stashContent: []
+    dockerOptions: '-u root'
   mtaBuild:
     buildTarget: 'CF'
-    dockerOptions: "-u 0"
+    dockerOptions: '-u 0'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
