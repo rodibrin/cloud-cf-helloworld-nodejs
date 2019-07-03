@@ -4,9 +4,9 @@ steps:
     dockerPullImage: true
     sidecarPullImage: true
     stashContent: []
+    dockerOptions: '--env HOME=.'
   mtaBuild:
     buildTarget: 'CF'
-    dockerOptions: '-u 0'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
