@@ -16,6 +16,6 @@ steps:
       space: 'dev'
       credentialsId: 'CF_CREDENTIALSID'
     cf_native:
-      dockerImage: 'ppiper/cf-cli'
+      dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
     mtaDeployPlugin:
-      dockerImage: 'ppiper/cf-cli'
+      dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
