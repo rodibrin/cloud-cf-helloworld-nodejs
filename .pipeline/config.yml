@@ -10,7 +10,7 @@ steps:
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
-    dockerImage: 'ppiper/cf-cli'
+    dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
     cloudFoundry:
       org: 'D046169trial_trial'
       space: 'dev'
