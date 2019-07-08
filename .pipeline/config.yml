@@ -4,13 +4,13 @@ steps:
     dockerPullImage: true
     sidecarPullImage: true
     stashContent: []
-    dockerOptions: '--env HOME=.'
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/mta-archive-builder:jira-365.0.1'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
+    dockerImage: 'ppiper/cf-cli'
     cloudFoundry:
       org: 'D046169trial_trial'
       space: 'dev'
