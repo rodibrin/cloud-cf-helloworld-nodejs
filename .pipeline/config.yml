@@ -3,7 +3,6 @@ steps:
   dockerExecute:
     dockerPullImage: true
     sidecarPullImage: true
-    dockerOptions: '-u 1000:1000'
     stashContent: []
   mtaBuild:
     buildTarget: 'CF'
