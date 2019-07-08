@@ -15,3 +15,7 @@ steps:
       org: 'D046169trial_trial'
       space: 'dev'
       credentialsId: 'CF_CREDENTIALSID'
+    cf_native:
+      dockerImage: 'ppiper/cf-cli'
+    mtaDeployPlugin:
+      dockerImage: 'ppiper/cf-cli'
