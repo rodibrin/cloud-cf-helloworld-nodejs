@@ -6,7 +6,7 @@ steps:
     stashContent: []
   mtaBuild:
     buildTarget: 'CF'
-    dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/mta-archive-builder:jira-365.0.1'	
+    dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/mta-archive-builder:jira-365.0.1'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
