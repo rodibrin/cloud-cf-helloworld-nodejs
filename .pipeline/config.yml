@@ -6,16 +6,10 @@ steps:
     stashContent: []
   mtaBuild:
     buildTarget: 'CF'
-    dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/mta-archive-builder:jira-365.0.1'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
-    dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
     cloudFoundry:
       org: 'D046169trial_trial'
       space: 'dev'
       credentialsId: 'CF_CREDENTIALSID'
-    cf_native:
-      dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
-    mtaDeployPlugin:
-      dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
