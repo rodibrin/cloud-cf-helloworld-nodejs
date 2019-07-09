@@ -5,7 +5,7 @@ steps:
     sidecarPullImage: true
     stashContent: []
   mtaBuild:
-    buildTarget: 'CF'
+    buildTarget: 'NEO'
     dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/mta-archive-builder:jira-365.0.1'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
@@ -19,3 +19,7 @@ steps:
       dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
     mtaDeployPlugin:
       dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
+  neoDeploy:
+    neo:
+      account: 'd046169trial'
+      credentialsId: 'CI_CREDENTIALS_ID'
