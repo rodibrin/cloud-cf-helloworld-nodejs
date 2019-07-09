@@ -10,6 +10,6 @@ steps:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
     cloudFoundry:
-      org: 'D046169trial_trial'
-      space: 'dev'
+      org: 'pipertest'
+      space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
