@@ -13,7 +13,7 @@ steps:
     dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
     cloudFoundry:
       org: 'D046169trial_dev2'
-      space: 'dev2'
+      space: 'dev'
       credentialsId: 'CF_CREDENTIALSID'
     cf_native:
       dockerImage: 'docker-registry.sapmakestaging.only.sap:5000/jira-365/ppiper/cf-cli:jira-365.0.1'
