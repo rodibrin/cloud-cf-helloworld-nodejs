@@ -4,6 +4,7 @@ steps:
     dockerPullImage: true
     sidecarPullImage: true
     stashContent: []
+    dockerOptions: '--env HOME=/tmp/piper'
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
