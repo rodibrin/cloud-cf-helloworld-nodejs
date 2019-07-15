@@ -7,7 +7,7 @@ steps:
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
-    dockerOptions: '-e HOME=/tmp/mta'
+    dockerOptions: '--env HOME=/tmp/mta'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
