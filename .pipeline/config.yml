@@ -1,12 +1,5 @@
 general:
-    buildTool: 'mta'
-    gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
 
-stages:
-  Init:
-    buildTool: 'mta'
-    verbose: 'yes'
-  
 steps:
   dockerExecute:
     dockerPullImage: true
