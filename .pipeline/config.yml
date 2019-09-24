@@ -2,26 +2,28 @@ general:
     buildTool: 'mta'
     gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
 
+stages:
+  Init:
+    buildTool: 'mta'
+    verbose: 'yes'
+  
 steps:
   dockerExecute:
     dockerPullImage: true
     sidecarPullImage: true
     stashContent: []
-    dockerOptions: '--env HOME=/tmp/piper'
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
-    dockerOptions: '--env HOME=/tmp/mta -u 0'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
     dockerImage: 'ppiper/cf-cli'
-    dockerEnvVars: 'HOME=/tmp/piper'
     cloudFoundry:
-      org: 'D046169trial_dev2'
-      space: 'dev'
+      org: 'pipertest'
+      space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
   neoDeploy:
     neo:
       account: 'd046169trial'
-      credentialsId: 'CI_CREDENTIALS_ID'
+      credentialsId: 'NEO_CREDENTIALS_ID'
