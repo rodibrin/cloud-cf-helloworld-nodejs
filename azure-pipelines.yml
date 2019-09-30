@@ -53,4 +53,4 @@ stages:
       steps:
         - download: current
           artifact: out.mtar
-        - bash: 'ls -la && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
+        - bash: 'ls -la && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy target/out.mtar'
