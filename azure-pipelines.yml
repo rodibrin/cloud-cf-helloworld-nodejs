@@ -1,0 +1,51 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+name: cd-cloud-cf-helloworld-nodejs
+resources:
+  containers:
+  - container: mta
+    image: 'ppiper/mta-archive-builder:latest'
+    options: --user 0:0 --privileged
+  - container: neo
+    image: 'ppiper/neo-cli:latest'
+    options: --user 0:0 --privileged
+  - container: node
+    image: 'geekykaran/headless-chrome-node-docker:latest'
+    options: --privileged
+
+trigger:
+- master
+
+stages:
+- stage: build
+  displayName: Build MTA for SAP Cloud Platform
+  jobs:
+    - job: build
+      pool:
+        vmImage: 'ubuntu-latest'
+      container: mta
+      steps:
+        - bash: 'mtaBuild --build-target NEO --mtar target/out.mtar build'
+
+- stage: test
+  displayName: Run Karma Test Suite
+  jobs:
+    - job: test
+      pool:
+        vmImage: 'ubuntu-latest'
+      container: node
+      steps:
+        - bash: 'npm install && npm run-script test'
+
+- stage: deploy
+  displayName: Deployment to SAP Cloud Platform (neo)
+  jobs:
+    - job: deploy
+      pool:
+        vmImage: 'ubuntu-latest'
+      container: neo
+      steps:
+        - bash: 'neo.sh deploy-mta --host "$(NEO_HOST)" --account "$(NEO_ACCOUNT)" --source "target/out.mtar" -u "$(NEO_USER)" -p "$(NEO_PASSWORD)"'
