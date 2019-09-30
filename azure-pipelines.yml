@@ -7,7 +7,7 @@ name: cd-cloud-cf-helloworld-nodejs
 resources:
   containers:
   - container: mta
-    image: 'ppiper/mta-archive-builder:latest'
+    image: 'rstengel/mta-archive-builder:latest'
     options: --user 0:0 --privileged
   - container: neo
     image: 'ppiper/neo-cli:latest'
@@ -16,7 +16,7 @@ resources:
     image: 'geekykaran/headless-chrome-node-docker:latest'
     options: --privileged
   - container: cf
-    image: 'ppiper/cf-cli:latest'
+    image: 'rstengel/cf-cli:latest'
     options: --user 0:0 --privileged --env CF_HOME="/home/piper"
 
 trigger:
@@ -31,7 +31,8 @@ stages:
         vmImage: 'ubuntu-latest'
       container: mta
       steps:
-        - bash: 'mtaBuild --build-target CF --mtar target/out.mtar build && ls -Rla && pwd && printenv'
+        - bash: 'id && cat /etc/passwd && pwd && printenv'
+        - bash: 'mtaBuild --build-target CF --mtar target/out.mtar build'
         - publish: target/out.mtar
           artifact: out.mtar
   
@@ -55,4 +56,5 @@ stages:
       steps:
         - download: current
           artifact: out.mtar
-        - bash: 'ls -la && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
+        - bash: 'id && cat /etc/passwd && pwd && printenv && ls -la $(Pipeline.Workspace)'
+        - bash: 'cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
