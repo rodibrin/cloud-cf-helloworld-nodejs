@@ -1,25 +1,9 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+#
 
-name: cd-cloud-cf-helloworld-nodejs
-resources:
-  containers:
-  - container: mta
-    image: 'rstengel/mta-archive-builder:azure'
-    options: --user 1000:1000
+pool:
+  vmImage: 'ubuntu-16.04'
 
-trigger:
-  - 1-azure-uid
+container: ubuntu:16.04
 
-stages:
-- stage: build
-  displayName: Build MTA for SAP Cloud Platform
-  jobs:
-    - job: build
-      pool:
-        vmImage: 'ubuntu-latest'
-      container: mta
-      steps:
-        - bash: 'id && cat /etc/passwd && pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
+steps:
+- script: printenv
