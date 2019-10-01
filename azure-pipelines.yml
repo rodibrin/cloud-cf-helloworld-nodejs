@@ -8,7 +8,7 @@ resources:
   containers:
   - container: mta
     image: 'rstengel/mta-archive-builder:azure'
-    options: --user 0:0 --privileged
+    options: --user 1000:1000
 
 trigger:
   - 1-azure-uid
