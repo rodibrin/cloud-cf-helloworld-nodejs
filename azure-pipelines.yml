@@ -7,7 +7,7 @@ name: cd-cloud-cf-helloworld-nodejs
 resources:
   containers:
   - container: mta
-    image: 'ppiper/mta-archive-builder:latest'
+    image: 'rstengel/mta-archive-builder:latest'
     options: --user 0:0 --privileged
   - container: neo
     image: 'ppiper/neo-cli:latest'
@@ -55,5 +55,4 @@ stages:
       steps:
         - download: current
           artifact: out.mtar
-        - bash: 'id && cat /etc/passwd && pwd && printenv && ls -la $(Pipeline.Workspace)'
-        - bash: 'cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
+        - bash: 'id && cat /etc/passwd && pwd && printenv && ls -la $(Pipeline.Workspace) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
