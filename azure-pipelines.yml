@@ -1,9 +1,19 @@
 #
+resources:
+  containers:
+  - container: ubuntu
+    image: 'ubuntu:16.04'
+    options: --user 1001:117
+    
+    
+stages:
+- stage: Initialize
+  jobs:
+    - job: build
+      pool:
+        vmImage: 'ubuntu-16.04'
 
-pool:
-  vmImage: 'ubuntu-16.04'
+      container: ubuntu
 
-container: ubuntu:16.04
-
-steps:
-- script: printenv
+      steps:
+        - script: printenv
