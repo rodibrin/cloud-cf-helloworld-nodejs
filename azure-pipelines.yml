@@ -7,20 +7,11 @@ name: cd-cloud-cf-helloworld-nodejs
 resources:
   containers:
   - container: mta
-    image: 'rstengel/mta-archive-builder:latest'
+    image: 'rstengel/mta-archive-builder:azure'
     options: --user 0:0 --privileged
-  - container: neo
-    image: 'ppiper/neo-cli:latest'
-    options: --user 0:0 --privileged
-  - container: node
-    image: 'geekykaran/headless-chrome-node-docker:latest'
-    options: --privileged
-  - container: cf
-    image: 'rstengel/cf-cli:latest'
-    options: --user 0:0 --privileged --env CF_HOME="/home/piper"
 
 trigger:
-  - 1-azure-basic-cf
+  - 1-azure-uid
 
 stages:
 - stage: build
@@ -32,27 +23,3 @@ stages:
       container: mta
       steps:
         - bash: 'id && cat /etc/passwd && pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
-        - publish: target/out.mtar
-          artifact: out.mtar
-  
-- stage: test
-  displayName: Run Karma Test Suite
-  jobs:
-    - job: test
-      pool:
-        vmImage: 'ubuntu-latest'
-      container: node
-      steps:
-        - bash: 'npm install && npm run-script test'
-
-- stage: deploy
-  displayName: Deployment to SAP Cloud Platform (Cloud foundry)
-  jobs:
-    - job: deploy
-      pool:
-        vmImage: 'ubuntu-latest'
-      container: cf
-      steps:
-        - download: current
-          artifact: out.mtar
-        - bash: 'id && cat /etc/passwd && pwd && printenv && ls -la $(Pipeline.Workspace) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
