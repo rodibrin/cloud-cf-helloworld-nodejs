@@ -29,7 +29,6 @@ stages:
       container: mta
       steps:
         - bash: 'pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
-        - task 
         - publish: $(Pipeline.Workspace)
   
 - stage: deploy
