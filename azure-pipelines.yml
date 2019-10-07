@@ -8,16 +8,13 @@ resources:
   containers:
   - container: mta
     image: 'rstengel/mta-archive-builder:latest'
-    options: --user 0:0 --privileged
-  - container: neo
-    image: 'ppiper/neo-cli:latest'
-    options: --user 0:0 --privileged
+    options: --user 0:0
   - container: node
     image: 'geekykaran/headless-chrome-node-docker:latest'
     options: --privileged
   - container: cf
     image: 'rstengel/cf-cli:latest'
-    options: --user 0:0 --privileged --env CF_HOME="/home/piper"
+    options: --user 0:0
 
 trigger:
   - 1-azure-basic-cf
