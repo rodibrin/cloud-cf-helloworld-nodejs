@@ -29,7 +29,7 @@ stages:
       container: mta
       steps:
         - bash: 'id && cat /etc/passwd && pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
-        - publish: '**/*'
+        - publish: '$(System.DefaultWorkingDirectory)/**/*'
   
 - stage: test
   displayName: Run Karma Test Suite
