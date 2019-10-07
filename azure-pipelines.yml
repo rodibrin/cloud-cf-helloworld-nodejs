@@ -28,7 +28,7 @@ stages:
         vmImage: 'ubuntu-latest'
       container: mta
       steps:
-        - bash: 'pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
+        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar "$(System.DefaultWorkingDirectory)/target/out.mtar" build'
         - publish: $(Pipeline.Workspace)
   
 - stage: deploy
@@ -40,4 +40,4 @@ stages:
       container: cf
       steps:
         - download: current
-        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && printenv && echo Pipeline.Workspace=$(Pipeline.Workspace) && echo System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy target/out.mtar'
+        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cd "$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy target/out.mtar'
