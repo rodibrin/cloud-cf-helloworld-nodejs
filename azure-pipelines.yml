@@ -29,8 +29,7 @@ stages:
       container: mta
       steps:
         - bash: 'id && cat /etc/passwd && pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
-        - publish: target/out.mtar
-          artifact: out.mtar
+        - publish: **/*
   
 - stage: test
   displayName: Run Karma Test Suite
@@ -51,5 +50,4 @@ stages:
       container: cf
       steps:
         - download: current
-          artifact: out.mtar
-        - bash: 'id && cat /etc/passwd && pwd && printenv && ls -la $(Pipeline.Workspace) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
+        - bash: 'id && cat /etc/passwd && pwd && printenv && ls -Rl $(Pipeline.Workspace) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/target/out.mtar'
