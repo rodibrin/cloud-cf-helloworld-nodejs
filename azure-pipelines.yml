@@ -29,8 +29,8 @@ stages:
       container: mta
       steps:
         - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar target/out.mtar build'
-        - publish: "target"
-          artifact: workspace
+        - publish: "target/out.mtar"
+          artifact: out.mtar
   
 - stage: deploy
   displayName: Deployment to SAP Cloud Platform (Cloud foundry)
@@ -41,6 +41,6 @@ stages:
       container: cf
       steps:
         - download: current
-          artifact: workspace
+          artifact: out.mtar
           
-        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cd "$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/workspace/out.mtar'
+        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
