@@ -28,19 +28,10 @@ stages:
         vmImage: 'ubuntu-latest'
       container: mta
       steps:
-        - bash: 'id && cat /etc/passwd && pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
+        - bash: 'pwd && printenv && mtaBuild --build-target CF --mtar target/out.mtar build'
+        - task 
         - publish: $(Pipeline.Workspace)
   
-- stage: test
-  displayName: Run Karma Test Suite
-  jobs:
-    - job: test
-      pool:
-        vmImage: 'ubuntu-latest'
-      container: node
-      steps:
-        - bash: 'npm install && npm run-script test'
-
 - stage: deploy
   displayName: Deployment to SAP Cloud Platform (Cloud foundry)
   jobs:
@@ -50,4 +41,4 @@ stages:
       container: cf
       steps:
         - download: current
-        - bash: 'id && cat /etc/passwd && pwd && printenv && ls -Rl $(Pipeline.Workspace) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/target/out.mtar'
+        - bash: 'pwd && printenv && echo Pipeline.Workspace=$(Pipeline.Workspace) && echo System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy target/out.mtar'
