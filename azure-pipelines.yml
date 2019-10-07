@@ -9,9 +9,6 @@ resources:
   - container: mta
     image: 'rstengel/mta-archive-builder:latest'
     options: --user 0:0
-  - container: node
-    image: 'geekykaran/headless-chrome-node-docker:latest'
-    options: --privileged
   - container: cf
     image: 'rstengel/cf-cli:latest'
     options: --user 0:0
@@ -28,8 +25,8 @@ stages:
         vmImage: 'ubuntu-latest'
       container: mta
       steps:
-        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar target/out.mtar build && ls -Rl $(Pipeline.Workspace) '
-        - publish: "target"
+        - bash: 'mtaBuild --build-target CF --mtar target/out.mtar build'
+        - publish: target
           artifact: target
   
 - stage: deploy
@@ -42,4 +39,4 @@ stages:
       steps:
         - download: current
           artifact: target
-        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/target/out.mtar'
+        - bash: 'cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/target/out.mtar'
