@@ -28,7 +28,7 @@ stages:
         vmImage: 'ubuntu-latest'
       container: mta
       steps:
-        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar target/out.mtar build'
+        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar target/out.mtar build && ls -Rl $(Pipeline.Workspace)'
         - publish: "target/out.mtar"
           artifact: out.mtar
   
