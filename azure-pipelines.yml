@@ -28,9 +28,9 @@ stages:
         vmImage: 'ubuntu-latest'
       container: mta
       steps:
-        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar target/out.mtar build && ls -Rl $(Pipeline.Workspace)'
-        - publish: "target/out.mtar"
-          artifact: out.mtar
+        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar target/out.mtar build && ls -Rl $(Pipeline.Workspace) '
+        - publish: "target"
+          artifact: target
   
 - stage: deploy
   displayName: Deployment to SAP Cloud Platform (Cloud foundry)
@@ -41,6 +41,5 @@ stages:
       container: cf
       steps:
         - download: current
-          artifact: out.mtar
-          
-        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/out.mtar'
+          artifact: target
+        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/target/out.mtar'
