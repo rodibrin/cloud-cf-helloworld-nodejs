@@ -28,8 +28,8 @@ stages:
         vmImage: 'ubuntu-latest'
       container: mta
       steps:
-        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar "$(System.DefaultWorkingDirectory)/target/out.mtar" build'
-        - publish: "$(System.DefaultWorkingDirectory)/target"
+        - bash: 'pwd && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && mtaBuild --build-target CF --mtar target/out.mtar build'
+        - publish: "target"
           artifact: workspace
   
 - stage: deploy
@@ -43,4 +43,4 @@ stages:
         - download: current
           artifact: workspace
           
-        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cd "$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy workspace/out.mtar'
+        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && echo "Pipeline.Workspace=$(Pipeline.Workspace)" && echo "System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory)" && cd "$(System.DefaultWorkingDirectory)" && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy $(Pipeline.Workspace)/workspace/out.mtar'
