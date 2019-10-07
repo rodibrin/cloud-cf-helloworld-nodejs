@@ -40,4 +40,4 @@ stages:
       container: cf
       steps:
         - download: current
-        - bash: 'pwd && printenv && echo Pipeline.Workspace=$(Pipeline.Workspace) && echo System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy target/out.mtar'
+        - bash: 'pwd && ls -Rl $(Pipeline.Workspace) && printenv && echo Pipeline.Workspace=$(Pipeline.Workspace) && echo System.DefaultWorkingDirectory=$(System.DefaultWorkingDirectory) && cf login -u "$(CF-USER)" -p "$(CF-PASSWORD)" -a "$(CF-API)" -o "$(CF-ORG)" -s "$(CF-SPACE)" && cf deploy target/out.mtar'
