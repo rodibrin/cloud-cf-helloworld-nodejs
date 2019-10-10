@@ -16,11 +16,11 @@ steps:
     stashContent: []
   mtaBuild:
     buildTarget: 'CF'
-    dockerImage: 'ppiper/mta-archive-builder'
+    dockerImage: 'rstengel/mta-archive-builder'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
-    dockerImage: 'ppiper/cf-cli'
+    dockerImage: 'rstengel/cf-cli'
     cloudFoundry:
       org: 'pipertest'
       space: 'J333'
