@@ -1,11 +1,9 @@
 general:
-  # Setting security context globally is currently not working with jaas
-  securityContext:
-    unknown: 1
   jenkinsKubernetes:
     # Setting security context globally is currently not working with jaas
     securityContext:
-      unknown: 2
+      runAsUser: 1000
+      fsGroup: 1000
 
 steps:
   dockerExecute:
