@@ -7,7 +7,7 @@ name: cd-cloud-cf-helloworld-nodejs
 resources:
   containers:
   - container: mta
-    image: 'ppiper/mta-archive-builder:azure'
+    image: 'ppiper/mta-archive-builder'
     options: --user 0:0
   - container: cf
     image: 'ppiper/cf-cli:latest'
