@@ -7,10 +7,10 @@ name: cd-cloud-cf-helloworld-nodejs
 resources:
   containers:
   - container: mta
-    image: 'rstengel/mta-archive-builder:azure'
+    image: 'ppiper/mta-archive-builder:azure'
     options: --user 0:0
   - container: cf
-    image: 'rstengel/cf-cli:latest'
+    image: 'ppiper/cf-cli:latest'
     options: --user 0:0
 
 trigger:
