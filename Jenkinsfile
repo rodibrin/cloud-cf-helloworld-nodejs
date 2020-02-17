@@ -14,6 +14,7 @@ pipeline {
                 script {
                   commonPipelineEnvironment.configuration["prepare"]="DONE"
                   echo "cpe.config.[prepare] set to:" + commonPipelineEnvironment.configuration["prepare"]
+                }
             }
         }
         stage('build') {
