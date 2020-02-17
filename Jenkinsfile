@@ -11,12 +11,17 @@ pipeline {
             steps {
                 echo "prepare instance"
                 testPipelineEnvironmentSingleton script: this
+                script {
+                  commonPipelineEnvironment.configuration["prepare"]="DONE"
+                  echo "cpe.config.[prepare] set to:" + commonPipelineEnvironment.configuration["prepare"]
             }
         }
         stage('build') {
             steps {
                 echo "build instance"
-                testPipelineEnvironmentSingleton script: this
+                script {
+                  echo "cpe.config.[prepare] consumed:" + commonPipelineEnvironment.configuration["prepare"]
+                }
             }
         }
     }
