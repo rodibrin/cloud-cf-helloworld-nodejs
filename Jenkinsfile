@@ -10,10 +10,11 @@ pipeline {
         stage('Prepare') {
             steps {
                 echo "prepare instance"
-                testPipelineEnvironmentSingleton script: this
+                prepareDefaultValues script: this
                 script {
-                  commonPipelineEnvironment.configuration["prepare"]="DONE"
-                  echo "cpe.config.[prepare] set to:" + commonPipelineEnvironment.configuration["prepare"]
+//                    import com.sap.piper.DefaultValueCache
+                    def defaultValues = prepareDefaultValues.defaultValueCache.getDefaultValues()
+                    defaultValues.each { echo "[prepare] dv.$it = $it" }
                 }
             }
         }
@@ -21,9 +22,10 @@ pipeline {
             steps {
                 echo "build instance"
                 script {
-                  echo "cpe.config.[prepare] consumed:" + commonPipelineEnvironment.configuration["prepare"]
+                    def defaultValues = prepareDefaultValues.defaultValueCache.getDefaultValues()
+                    defaultValues.each { echo "[build] dv.$it = $it" }
                 }
             }
         }
     }
-}                           
+}
