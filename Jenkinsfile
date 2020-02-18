@@ -1,3 +1,3 @@
-@Library('piper-lib-rodibrin@PR1123') _
+@Library('piper-lib-os') _
 
 piperPipeline script: this
