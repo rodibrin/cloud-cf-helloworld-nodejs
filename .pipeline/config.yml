@@ -1,5 +1,6 @@
 general:
-
+ buildTool: 'mta'
+ 
 steps:
   dockerExecute:
     dockerPullImage: true
