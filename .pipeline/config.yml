@@ -1,6 +1,5 @@
 general:
  buildTool: 'mta'
- nodeLabel: 'testNode'
  
 steps:
   dockerExecute:
