@@ -1,6 +1,8 @@
 general:
  buildTool: 'mta'
  productiveBranch: '1-ppiper-pipeline'
+ gitUserName: 'd046169'
+ gitUserEMail: 'r.stengel@sap.com'
  
 steps:
   dockerExecute:
