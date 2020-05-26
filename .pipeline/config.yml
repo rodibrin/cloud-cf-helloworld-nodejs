@@ -1,9 +1,14 @@
 general:
- buildTool: 'mta'
- productiveBranch: 'master'
- gitUserName: 'd046169'
- gitUserEMail: 'r.stengel@sap.com'
- gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
+  buildTool: 'mta'
+  productiveBranch: 'master'
+  gitUserName: 'd046169'
+  gitUserEMail: 'r.stengel@sap.com'
+  gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
+  verbose: true
+  
+stages:
+  Build:
+    script: this
  
 steps:
   dockerExecute:
