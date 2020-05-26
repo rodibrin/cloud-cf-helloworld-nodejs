@@ -1,8 +1,9 @@
 general:
  buildTool: 'mta'
- productiveBranch: '1-ppiper-pipeline'
+ productiveBranch: 'master'
  gitUserName: 'd046169'
  gitUserEMail: 'r.stengel@sap.com'
+ gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
  
 steps:
   dockerExecute:
