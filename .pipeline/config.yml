@@ -17,11 +17,9 @@ steps:
     stashContent: []
   mtaBuild:
     buildTarget: 'NEO'
-    dockerImage: 'ppiper/mta-archive-builder'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
-    dockerImage: 'ppipxer/cf-cli'
     cloudFoundry:
       org: 'pipertest'
       space: 'J333'
