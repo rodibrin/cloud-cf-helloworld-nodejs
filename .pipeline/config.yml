@@ -16,6 +16,7 @@ steps:
     sidecarPullImage: true
     stashContent: []
   mtaBuild:
+    mtaBuildTool: 'classic'
     buildTarget: 'NEO'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
@@ -26,5 +27,6 @@ steps:
       credentialsId: 'CF_CREDENTIALSID'
   neoDeploy:
     neo:
+      host: 'hanatrial.demand.com'
       account: 'f46cb6b6neo'
       credentialsId: 'NEO_CREDENTIALS_ID'
