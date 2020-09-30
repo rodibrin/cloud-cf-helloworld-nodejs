@@ -16,17 +16,17 @@ steps:
     sidecarPullImage: true
     stashContent: []
   mtaBuild:
-    buildTarget: 'CF'
+    buildTarget: 'NEO'
     dockerImage: 'ppiper/mta-archive-builder'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
-    dockerImage: 'ppiper/cf-cli'
+    dockerImage: 'ppipxer/cf-cli'
     cloudFoundry:
       org: 'pipertest'
       space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
   neoDeploy:
     neo:
-      account: 'd046169trial'
+      account: 'f46cb6b6neo'
       credentialsId: 'NEO_CREDENTIALS_ID'
