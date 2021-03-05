@@ -9,7 +9,7 @@ general:
     credentialsId: 'CM_CREDENTIALS_ID'
     solman:
       docker:
-        image: 'docker.wdf.sap.corp:50001/d046169/cm-client-sap-cert'
+        image: 'rstengel/cm-client-sap-cert'
   
 stages:
   Build:
