@@ -5,6 +5,11 @@ general:
   gitUserEMail: 'r.stengel@sap.com'
   gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
   verbose: true
+  changeManagement:
+    credentialsId: 'CM_CREDENTIALS_ID'
+    solman:
+      docker:
+        image: 'docker.wdf.sap.corp:50001/d046169/cm-client-sap-cert'
   
 stages:
   Build:
@@ -26,7 +31,3 @@ steps:
       org: 'pipertest'
       space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
-  neoDeploy:
-    neo:
-      account: 'd046169trial'
-      credentialsId: 'NEO_CREDENTIALS_ID'
