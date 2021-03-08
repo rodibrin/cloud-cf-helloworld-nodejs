@@ -32,4 +32,4 @@ steps:
       space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
   transportRequestUploadSOLMAN:
-		dockerImage: 'rstengel/cm-client-sap-cert'
+    dockerImage: 'rstengel/cm-client-sap-cert'
