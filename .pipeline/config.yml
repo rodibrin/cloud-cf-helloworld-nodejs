@@ -31,3 +31,5 @@ steps:
       org: 'pipertest'
       space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
+  transportRequestUploadSOLMAN:
+		dockerImage: 'rstengel/cm-client-sap-cert'
