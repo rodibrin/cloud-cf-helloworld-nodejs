@@ -16,10 +16,10 @@ stages:
     script: this
  
 steps:
-  dockerExecute:
-    dockerPullImage: true
-    sidecarPullImage: true
-    stashContent: []
+#  dockerExecute:
+#    dockerPullImage: true
+#    sidecarPullImage: true
+#    stashContent: []
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
@@ -34,3 +34,6 @@ steps:
   transportRequestUploadSOLMAN:
     verbose: true
     dockerImage: 'rstengel/cm-client-sap-cert'
+    stashContent: []
+    stashIncludes:
+      workspace: '**/*'
