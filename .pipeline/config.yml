@@ -16,10 +16,12 @@ stages:
     script: this
  
 steps:
-#  dockerExecute:
-#    dockerPullImage: true
-#    sidecarPullImage: true
-#    stashContent: []
+  dockerExecute:
+    dockerPullImage: true
+    sidecarPullImage: true
+    stashContent: 
+      - 'git'
+    stashIncludes: [git: '**/*']
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
