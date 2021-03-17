@@ -12,10 +12,6 @@ general:
         image: 'rstengel/cm-client-sap-cert'
   
 stages:
-  Init:
-    stashContent: 
-      - 'git'
-    stashIncludes: [git: '**/*']
   Build:
     script: this
  
