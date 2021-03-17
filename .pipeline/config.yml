@@ -24,8 +24,7 @@ steps:
     stashIncludes: [git: '**/*']
   dockerExecuteOnKubernetes:
     stashContent: 
-      - 'git'
-    stashIncludes: [git: '**/*']
+      - 'workspace'
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
