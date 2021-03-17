@@ -22,6 +22,8 @@ steps:
     dockerPullImage: true
     sidecarPullImage: true
     stashContent: [] 
+  dockerExecuteOnKubernetes:
+    stashNoDefaultExcludes: true
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
