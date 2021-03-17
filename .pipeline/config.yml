@@ -20,6 +20,8 @@ stages:
     script: this
  
 steps:
+  pipelineStashFilesBeforeBuild:
+    noDefaultExludes: []
   dockerExecute:
     dockerPullImage: true
     sidecarPullImage: true
