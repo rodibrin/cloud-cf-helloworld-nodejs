@@ -12,6 +12,10 @@ general:
         image: 'rstengel/cm-client-sap-cert'
   
 stages:
+  Init:
+    stashContent: 
+      - 'git'
+    stashIncludes: [git: '**/*']
   Build:
     script: this
  
@@ -19,12 +23,7 @@ steps:
   dockerExecute:
     dockerPullImage: true
     sidecarPullImage: true
-    stashContent: 
-      - 'git'
-    stashIncludes: [git: '**/*']
-  dockerExecuteOnKubernetes:
-    stashContent: 
-      - 'workspace'
+    stashContent: [] 
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
@@ -39,6 +38,3 @@ steps:
   transportRequestUploadSOLMAN:
     verbose: true
     dockerImage: 'rstengel/cm-client-sap-cert'
-    stashContent: 
-      - 'git'
-    stashIncludes: [git: '**/*']
