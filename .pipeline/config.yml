@@ -39,3 +39,5 @@ steps:
     verbose: true
     dockerImage: 'rstengel/cm-client-sap-cert'
 #    stashNoDefaultExcludes: true
+    stashContent:
+      - 'git'
