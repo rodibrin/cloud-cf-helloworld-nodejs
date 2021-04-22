@@ -41,3 +41,8 @@ steps:
 #    stashNoDefaultExcludes: true
     stashContent:
       - 'git'
+  transportRequestReqIDFromGit:
+    verbose: true
+    dockerImage: 'rstengel/cm-client-sap-cert'
+    stashContent:
+      - 'git'
