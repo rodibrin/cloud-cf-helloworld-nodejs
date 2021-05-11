@@ -44,5 +44,8 @@ steps:
   transportRequestReqIDFromGit:
     verbose: true
     dockerImage: 'rstengel/cm-client-sap-cert'
+    dockerOptions: []
+    dockerEnvVars: {}
+    dockerPullImage: true
     stashContent:
       - 'git'
