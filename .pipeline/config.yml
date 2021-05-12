@@ -43,7 +43,7 @@ steps:
 #      - 'git'
   transportRequestReqIDFromGit:
     verbose: true
-    gitFrom: 'HEAD~1'
+    gitFrom: 'step/gitFrom'
     changeManagement:
       git:
-        from: 'HEAD~1'
+        from: 'step/cm/git/from'
