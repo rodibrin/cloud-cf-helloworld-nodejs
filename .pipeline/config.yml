@@ -5,7 +5,10 @@ general:
   gitUserEMail: 'r.stengel@sap.com'
   gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
   verbose: true
+  gitFrom: 'step/gitFrom'
   changeManagement:
+    git:
+      from: 'step/cm/git/from'
     credentialsId: 'CM_CREDENTIALS_ID'
     solman:
       docker:
