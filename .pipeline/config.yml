@@ -47,7 +47,6 @@ steps:
     dockerImage: 'rstengel/cm-client-sap-cert'
   transportRequestReqIDFromGit:
     verbose: true
-    gitFrom: 'step/gitFrom'
     changeManagement:
       git:
-        from: 'step/cm/git/from'
+        from: 'origin/master'
