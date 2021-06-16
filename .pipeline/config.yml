@@ -35,6 +35,8 @@ steps:
       org: 'pipertest'
       space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
+  transportRequestUploadRFC:
+    dockerImage: 'rstengel/node-rfc'
   transportRequestUploadSOLMAN:
     verbose: true
     dockerImage: 'rstengel/cm-client-sap-cert'
