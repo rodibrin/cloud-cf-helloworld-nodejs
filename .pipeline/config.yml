@@ -13,7 +13,7 @@ general:
     rfc:
       docker:
         image: 'rstengel/node-rfc'
-  
+  collectTelemetryData: false
 stages:
   Build:
     script: this
