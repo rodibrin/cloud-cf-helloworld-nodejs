@@ -49,4 +49,4 @@ steps:
     verbose: true
     changeManagement:
       git:
-        from: 'origin/master'
+        from: '5c4dbec837b607cee7f966749c5b2b5892c1d361'
