@@ -10,6 +10,9 @@ general:
     solman:
       docker:
         image: 'rstengel/cm-client-sap-cert'
+    rfc:
+      docker:
+        image: 'rstengel/node-rfc'
   
 stages:
   Build:
@@ -21,9 +24,6 @@ steps:
   dockerExecute:
     dockerPullImage: true
     sidecarPullImage: true
-#    stashContent: [] 
-#  dockerExecuteOnKubernetes:
-#    stashNoDefaultExcludes: true
   mtaBuild:
     buildTarget: 'CF'
     dockerImage: 'ppiper/mta-archive-builder'
@@ -38,9 +38,6 @@ steps:
   transportRequestUploadSOLMAN:
     verbose: true
     dockerImage: 'rstengel/cm-client-sap-cert'
-    stashNoDefaultExcludes: true
-#    stashContent:
-#      - 'git'
   transportRequestReqIDFromGit:
     verbose: true
     gitFrom: 'step/gitFrom'
