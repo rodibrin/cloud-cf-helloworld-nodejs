@@ -25,8 +25,8 @@ steps:
     dockerPullImage: true
     sidecarPullImage: true
   mtaBuild:
-    buildTarget: 'CF'
-    dockerImage: 'ppiper/mta-archive-builder'
+#    buildTarget: 'CF'
+    dockerImage: 'devxci/mbtci-alpine'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
