@@ -35,6 +35,16 @@ steps:
       org: 'pipertest'
       space: 'J333'
       credentialsId: 'CF_CREDENTIALSID'
+  transportRequestUploadCTS:
+    changeManagement:
+      credentialsId: 'CTS_CREDENTIALS_ID'
+      endpoint: 'http://wdflbmd16301.wdf.sap.corp:8000/sap/opu/odata/SAP/SCTS_CLOUD_API_ODATA_SRV'
+    applicationName: 'CWB4NA'
+    abapPackage: 'MHOLL'
+    transportRequestId: 'A5DK000102'
+    
+#    osDeployUser:
+#    dockerImage: 'rstengel/fiorideploy'
   transportRequestUploadRFC:
     changeManagement:
       credentialsId: 'RFC_CREDENTIALS_ID'
