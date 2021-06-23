@@ -6,7 +6,6 @@ general:
   gitSshKeyCredentialsId: 'GIT_CREDENTIALS'
   verbose: true
   changeManagement:
-    credentialsId: 'CM_CREDENTIALS_ID'
     solman:
       docker:
         image: 'rstengel/cm-client-sap-cert'
