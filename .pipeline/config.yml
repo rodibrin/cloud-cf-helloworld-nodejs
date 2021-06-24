@@ -57,3 +57,18 @@ steps:
     changeManagement:
       git:
         from: '5c4dbec837b607cee7f966749c5b2b5892c1d361'
+  transportRequestUploadFile:
+    changeManagement:
+      type: 'CTS'
+      credentialsId: 'CTS_CREDENTIALS_ID'
+      endpoint: 'http://wdflbmd16301.wdf.sap.corp:8000/sap/opu/odata/SAP/SCTS_CLOUD_API_ODATA_SRV'
+      client: '001'
+      cts:
+        nodeDocker:
+          image: 'rstengel/fiori'
+          pullImage: true
+        npmInstallOpts: []
+        deployToolDependencies: []
+    applicationName: 'CWB4NA'
+    abapPackage: 'MHOLL'
+    transportRequestId: 'A5DK000102'
