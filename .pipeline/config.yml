@@ -7,7 +7,7 @@ steps:
     stashContent: []
   mtaBuild:
     buildTarget: 'CF'
-    dockerImage: 'ppiper/mta-archive-builder'
+    dockerImage: 'devxci/mbtci-alpine'
   cloudFoundryDeploy:
     deployTool: 'mtaDeployPlugin'
     deployType: 'standard'
