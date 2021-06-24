@@ -43,7 +43,7 @@ steps:
     transportRequestId: 'A5DK000102'
     
 #    osDeployUser:
-#    dockerImage: 'rstengel/fiorideploy'
+    dockerImage: 'rstengel/fiori'
   transportRequestUploadRFC:
     changeManagement:
       credentialsId: 'RFC_CREDENTIALS_ID'
